@@ -14,7 +14,7 @@ public class ContractTables {
 	// Id de contrato
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer contractId;
 	// Fecha de validez
 	private String validityDate;
 	// Fecha de expiracion
@@ -25,15 +25,39 @@ public class ContractTables {
 	// Customer de constratos
 	@ManyToOne
 	@JoinColumn
-	CustomerTables customer = new CustomerTables();
+	CustomerTables customerRelation;
+
+	/**
+	 * Constructor sin parametros
+	 */
+	public ContractTables() {
+		super();
+	}
+
+	/**
+	 * Constructor con parametros
+	 * 
+	 * @param id
+	 * @param validityDate
+	 * @param expirationDate
+	 * @param monthlyPrice
+	 * @param customerRelation
+	 */
+	public ContractTables(Integer id, String validityDate, String expirationDate, int monthlyPrice) {
+		super();
+		this.contractId = id;
+		this.validityDate = validityDate;
+		this.expirationDate = expirationDate;
+		this.monthlyPrice = monthlyPrice;
+	}
 
 	// Getters y setters
 	public Integer getId() {
-		return id;
+		return contractId;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.contractId = id;
 	}
 
 	public String getExpirationDate() {
@@ -61,18 +85,18 @@ public class ContractTables {
 	}
 
 	public CustomerTables getCustomer() {
-		return customer;
+		return customerRelation;
 	}
 
 	public void setCustomer(CustomerTables customer) {
-		this.customer = customer;
+		this.customerRelation = customer;
 	}
 
 	@Override
 	public String toString() {
-		return "ContractTables [id=" + id + ", validityDate=" + validityDate + ", expirationDate=" + expirationDate
-				+ ", monthlyPrice=" + monthlyPrice + ", customer=" + customer.getName() + " "
-				+ customer.getFirstSurname() + " " + customer.getSecondSurname() + "]";
+		return "ContractTables [id=" + contractId + ", validityDate=" + validityDate + ", expirationDate=" + expirationDate
+				+ ", monthlyPrice=" + monthlyPrice + ", customer=" + customerRelation.getName() + " "
+				+ customerRelation.getFirstSurname() + " " + customerRelation.getSecondSurname() + "]";
 	}
 
 }

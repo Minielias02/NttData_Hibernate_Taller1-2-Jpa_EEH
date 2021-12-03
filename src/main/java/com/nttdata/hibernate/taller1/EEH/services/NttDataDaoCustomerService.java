@@ -2,6 +2,7 @@ package com.nttdata.hibernate.taller1.EEH.services;
 
 import java.util.List;
 
+import com.nttdata.hibernate.taller1.EEH.persistence.ContractTables;
 import com.nttdata.hibernate.taller1.EEH.persistence.CustomerTables;
 
 /**
@@ -49,5 +50,8 @@ public interface NttDataDaoCustomerService {
 	 * @return List<CustomerTables>
 	 */
 	public List<CustomerTables> searchAll();
+	
+	public List<CustomerTables> returnAllCustomer(CustomerTables customer, ContractTables contract);
+
 
 }

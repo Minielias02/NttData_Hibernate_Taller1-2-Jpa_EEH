@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import com.nttdata.hibernate.taller1.EEH.persistence.CustomerTables;
+import com.nttdata.hibernate.taller1.EEH.persistence.ContractTables;
 import com.nttdata.hibernate.taller1.EEH.persistence.CustomerDaoI;
 import com.nttdata.hibernate.taller1.EEH.persistence.CustomerDaoImp;
 
@@ -76,6 +77,15 @@ public class NttDataDaoCustomerServiceImpl implements NttDataDaoCustomerService 
 		// Obtención de partido.
 		customerList = customer.searchAll();
 
+		return customerList;
+	}
+
+	@Override
+	public List<CustomerTables> returnAllCustomer(CustomerTables customer, ContractTables contract) {
+		List<CustomerTables> customerList = new ArrayList<CustomerTables>();
+		if (customer != null&& contract!=null) {
+			customerList=this.customer.returnAllCustomer(customer, contract);
+		}
 		return customerList;
 	}
 }

@@ -28,8 +28,7 @@ public class NttDataDaoContractServiceImp implements NttDataDaoContractService {
 	@Override
 	public void insertNewContract(ContractTables newContract) {
 		if (newContract != null && newContract.getId() == null) {
-
-			// Insercción del nuevo cliente.
+			// Insercción del nuevo contrato.
 			contract.insert(newContract);
 		}
 
@@ -39,7 +38,7 @@ public class NttDataDaoContractServiceImp implements NttDataDaoContractService {
 	public void updateContract(ContractTables updatedContract) {
 		// Verificación de nulidad y existencia.
 		if (updatedContract != null && updatedContract.getId() != null) {
-			// Actualización del partido.
+			// Actualización del contract.
 			contract.update(updatedContract);
 		}
 
@@ -49,20 +48,20 @@ public class NttDataDaoContractServiceImp implements NttDataDaoContractService {
 	public void deleteContract(ContractTables deletedContract) {
 		// Verificación de nulidad y existencia.
 		if (deletedContract != null && deletedContract.getId() != null) {
-			// Eliminación del cliente.
+			// Eliminación del contract.
 			contract.delete(deletedContract);
 		}
 
 	}
 
 	@Override
-	public ContractTables searchById(int ContractId) {
+	public ContractTables searchById(int contractId) {
 		// Resultado.
 		ContractTables contractT = null;
 		// Verificación de nulidad.
 		if (contract != null) {
-			// Obtención de cliente por ID.
-			contractT = contract.searchById(ContractId);
+			// Obtención de contract por ID.
+			contractT = contract.searchById(contractId);
 		}
 		return contractT;
 	}
@@ -72,16 +71,20 @@ public class NttDataDaoContractServiceImp implements NttDataDaoContractService {
 		// Resultado.
 		List<ContractTables> contractTables = new ArrayList<ContractTables>();
 
-		// Obtención de partido.
+		// Obtención de contract.
 		contractTables = contract.searchAll();
 
 		return contractTables;
 	}
 
 	@Override
-	public ContractTables searchByCustomer(CustomerTables ContractCustomer) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer searchByCustomer(CustomerTables ContractCustomer) {
+		Integer customerID = null;
+		if (contract != null) {
+			// Obtención de contract por customer.
+			customerID = contract.searchByCustomer(ContractCustomer);
+		}
+		return customerID;
 	}
 
 }

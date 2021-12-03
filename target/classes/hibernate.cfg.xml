@@ -18,9 +18,15 @@
 		<property name="hibernate.show_sql">false</property>
 
 		<!-- MAPEOS -->
-	
-		<mapping class="com.nttdata.hibernate.taller1.EEH.persistence.CustomerTables"  />
-			<mapping class="com.nttdata.hibernate.taller1.EEH.persistence.ContractTables"  />
+
+		<mapping
+			class="com.nttdata.hibernate.taller1.EEH.persistence.CustomerTables" />
+		<mapping
+			class="com.nttdata.hibernate.taller1.EEH.persistence.ContractTables" />
+		<mapping
+			class="com.nttdata.hibernate.taller1.EEH.persistence.EnterpriseTables" />
+		<mapping
+			class="com.nttdata.hibernate.taller1.EEH.persistence.BossTables" />
 
 	</session-factory>
 </hibernate-configuration>

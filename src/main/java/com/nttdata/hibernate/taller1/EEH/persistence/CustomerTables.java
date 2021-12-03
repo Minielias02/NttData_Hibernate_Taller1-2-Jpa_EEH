@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,7 +17,7 @@ public class CustomerTables {
 	// Id de persona
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer customerId;
 	// Nombre de la persona
 	private String name;
 	// Primer apellido
@@ -27,8 +28,12 @@ public class CustomerTables {
 	private String dni;
 
 	// Contratos de customer
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customerRelation")
 	List<ContractTables> contracts = new ArrayList<ContractTables>();
+
+	// Empresas de customer
+	@ManyToMany(mappedBy = "customerList")
+	List<EnterpriseTables> enterpriseList = new ArrayList<EnterpriseTables>();
 
 	/**
 	 * Constructor sin param
@@ -56,7 +61,7 @@ public class CustomerTables {
 
 	// Getters y Setters
 	public Integer getId() {
-		return id;
+		return customerId;
 	}
 
 	public List<ContractTables> getContracts() {
@@ -68,7 +73,7 @@ public class CustomerTables {
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.customerId = id;
 	}
 
 	public String getName() {
@@ -104,10 +109,18 @@ public class CustomerTables {
 		this.dni = dni;
 	}
 
+	public List<EnterpriseTables> getCustomerList() {
+		return enterpriseList;
+	}
+
+	public void setCustomerList(List<EnterpriseTables> customerList) {
+		this.enterpriseList = customerList;
+	}
+
 	// Metodo toString
 	@Override
 	public String toString() {
-		return "CustomerTables [id=" + id + ", name=" + name + ", firstSurname=" + firstSurname + ", secondSurname="
+		return "CustomerTables [id=" + customerId + ", name=" + name + ", firstSurname=" + firstSurname + ", secondSurname="
 				+ secondSurname + ", dni=" + dni + ", contracts=" + contracts + "]";
 	}
 

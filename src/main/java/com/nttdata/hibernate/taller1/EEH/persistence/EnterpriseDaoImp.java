@@ -2,21 +2,17 @@ package com.nttdata.hibernate.taller1.EEH.persistence;
 
 import org.hibernate.Session;
 
-/**
- * 
- * @author elias
- *
- */
-public class ContractDaoImp extends CommonDaoImplement<ContractTables> implements ContractDaoI {
+public class EnterpriseDaoImp extends CommonDaoImplement<EnterpriseTables> implements EnterpriseDaoI {
+
 	/** Sesión de conexión a BD */
 	private Session session;
 
 	/**
 	 * Método constructor
 	 */
-	public ContractDaoImp(Session session) {
+	public EnterpriseDaoImp(Session session) {
 		super(session);
-		this.setSession(session);
+		this.session = session;
 	}
 
 	// Getters y setters
@@ -26,12 +22,6 @@ public class ContractDaoImp extends CommonDaoImplement<ContractTables> implement
 
 	public void setSession(Session session) {
 		this.session = session;
-	}
-
-	@Override
-	public Integer searchByCustomer(CustomerTables ContractCustomer) {
-		
-		return ContractCustomer.getId();
 	}
 
 }

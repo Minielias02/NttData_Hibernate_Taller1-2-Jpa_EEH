@@ -7,4 +7,5 @@ package com.nttdata.hibernate.taller1.EEH.persistence;
  */
 public interface ContractDaoI extends CommonDaoI<ContractTables> {
 
+	public Integer searchByCustomer(CustomerTables ContractCustomer);
 }

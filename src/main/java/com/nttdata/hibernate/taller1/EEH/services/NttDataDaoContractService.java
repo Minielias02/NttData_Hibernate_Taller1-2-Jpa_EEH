@@ -40,15 +40,15 @@ public interface NttDataDaoContractService {
 	/**
 	 * Busca por Id un customer
 	 * 
-	 * @param customerId
-	 * @return CustomerTables
+	 * @param contractId
+	 * @return ContractTables
 	 */
-	public ContractTables searchById(final int ContractId);
+	public ContractTables searchById(final int contractId);
 
 	/**
-	 * Muestra todos los customers
+	 * Muestra todos los contract
 	 * 
-	 * @return List<CustomerTables>
+	 * @return List<ContractTables>
 	 */
 	public List<ContractTables> searchAll();
 	
@@ -58,7 +58,7 @@ public interface NttDataDaoContractService {
 	 * @param ContractCustomer
 	 * @return ContractTable
 	 */
-	public ContractTables searchByCustomer(final CustomerTables ContractCustomer);
+	public Integer searchByCustomer(final CustomerTables ContractCustomer);
 
 	
 	
